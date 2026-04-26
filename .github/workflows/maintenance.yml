@@ -21,7 +21,7 @@ jobs:
       #     cache: pnpm
       - name: Run webring maintainance
         run: |
-          bun install --verbose
+          bun install
           bun maintain
       - name: Check if remote exists
         run: |

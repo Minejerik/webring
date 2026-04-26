@@ -14,7 +14,7 @@ const webringLink = "https://webring.hackclub.com"
 // webring link is present in the rendered HTML with stripped out comments
 
 async function checkWithBrowser(url, webringLink) {
-    const browser = await puppeteer.launch({ headless: "new" });
+    const browser = await puppeteer.launch({ headless: "new", args: ["--no-sandbox", "--disable-setuid-sandbox"] });
     const page = await browser.newPage();
 
     try {
