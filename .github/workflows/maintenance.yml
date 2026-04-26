@@ -14,17 +14,15 @@ jobs:
         with:
           ref: main
           token: '${{ secrets.GITHUB_TOKEN }}'
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 8
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: pnpm
+      - uses: oven-sh/setup-bun@v2
+      # - uses: actions/setup-node@v3 testing rn
+      #   with:
+      #     node-version: 18
+      #     cache: pnpm
       - name: Run webring maintainance
         run: |
-          pnpm install
-          pnpm maintain
+          bun install
+          bun maintain
       - name: Check if remote exists
         run: |
           output=$(git ls-remote --heads origin refs/heads/auto-maintain-branch)
